@@ -1,6 +1,6 @@
 # Skill-Swap-Platform
 A peer-to-peer Skill Exchange Platform designed for collaborative learning, featuring a matching algorithm to connect users for reciprocal knowledge sharing.
-# 🚀 Skill Exchange Platform  
+# Skill Exchange Platform  
 
 <p align="center">
   <img src="https://img.shields.io/badge/Project-Skill%20Exchange%20Platform-blueviolet?style=for-the-badge" />
@@ -13,10 +13,10 @@ A peer-to-peer Skill Exchange Platform designed for collaborative learning, feat
 
 The **Skill Exchange Platform** is a peer-to-peer learning system where users can:
 
-- 🎯 Offer their skills  
-- 📚 Learn new skills  
-- 🔄 Exchange knowledge mutually  
-- 🤝 Collaborate with other learners  
+- Offer their skills  
+- Learn new skills  
+- Exchange knowledge mutually  
+- Collaborate with other learners  
 
 This project is inspired by the research paper:  
  **“Skills Me – Knowledge Exchange Platform”**
@@ -68,7 +68,7 @@ Skill-Exchange-Platform/
 └── assets/
 ```
 
-## 📊 GitHub Stats  
+## GitHub Stats  
 
 > Replace `your-username` with your GitHub username.
 
@@ -79,15 +79,15 @@ Skill-Exchange-Platform/
 
 ---
 
-## 👨‍💻 Author  
+## Author  
 
 **Swetha S**  
-🎓 Computer Science Student  
+Computer Science Student  
 Passionate about Continuous Learning  
 
 ---
 
-## ⭐ Show Your Support  
+## Show Your Support  
 
 If you like this project, give it a ⭐ on GitHub!
 
