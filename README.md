@@ -19,23 +19,23 @@ The **Skill Exchange Platform** is a peer-to-peer learning system where users ca
 - 🤝 Collaborate with other learners  
 
 This project is inspired by the research paper:  
-📖 **“Skills Me – Knowledge Exchange Platform”**
+ **“Skills Me – Knowledge Exchange Platform”**
 
 It implements structured skill matching and collaborative learning into a practical web application.
 
 ---
 
-## 🛠️ Tech Stack  
+## Tech Stack  
 
 <p align="center">
 
 <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/>
-<img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"/>
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
+<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
 
 </p>
 
-### 🧰 Tools Used
+### Tools Used
 
 <p align="center">
 <img src="https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white"/>
@@ -44,7 +44,7 @@ It implements structured skill matching and collaborative learning into a practi
 
 ---
 
-## ✨ Features  
+## Features  
 
 ✔️ User Registration & Login  
 ✔️ Profile Creation (Skills Offered & Skills Wanted)  
@@ -57,7 +57,7 @@ It implements structured skill matching and collaborative learning into a practi
 
 ---
 
-## 📂 Project Structure  
+## Project Structure  
 
 ```
 Skill-Exchange-Platform/
