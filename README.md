@@ -52,7 +52,6 @@ It implements structured skill matching and collaborative learning into a practi
 ✔️ Interactive UI  
 ✔️ Responsive Design  
 ✔️ Research-Based Concept Implementation  
-✔️Feedback & rating
 ✔️ML based ranking system
 
 ---
