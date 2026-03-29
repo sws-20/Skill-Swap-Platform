@@ -73,8 +73,8 @@ Skill-Exchange-Platform/
 > Replace `your-username` with your GitHub username.
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Sidharth-S12&show_icons=true&theme=radical"/>
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Sidharth-S12&theme=radical"/>
+  <img src="https://github-readme-stats.vercel.app/api?username=sws-20&show_icons=true&theme=radical"/>
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=sws-20&theme=radical"/>
 </p>
 
 ---
