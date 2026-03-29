@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>SkillSwap — Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#006064',
+            accent: '#FF7F50'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .glass {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+
+</head>
+
+<body class="bg-gradient-to-br from-[#0F172A] via-[#020617] to-[#020617] text-gray-200 min-h-screen flex">
+
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="w-64 fixed h-screen bg-[#020617]/90 border-r border-white/10 p-6">
+
+    <div class="flex items-center gap-3 mb-10">
+      <div id="sidebarAvatar"
+        class="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center font-bold">
+        S
+      </div>
+      <span class="text-xl font-semibold">SkillSwap</span>
+    </div>
+
+    <nav class="space-y-4 text-gray-300">
+
+      <a class="block px-4 py-2 rounded-lg bg-primary/20 text-primary">
+        Dashboard
+      </a>
+
+      <!-- CHANGED: Requests link replaces Skill Exchange -->
+      <a href="view-requests.html" class="block px-4 py-2 rounded-lg hover:bg-white/10">
+        Requests
+      </a>
+
+      <a href="browse.html" class="block px-4 py-2 rounded-lg hover:bg-white/10">
+        Learning Hub
+      </a>
+
+      <!-- PROFILE LINK -->
+      <a href="profile.html" class="block px-4 py-2 rounded-lg hover:bg-white/10">
+        Profile
+      </a>
+
+    </nav>
+
+  </aside>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <div class="ml-64 w-full">
+
+    <!-- ================= TOP BAR ================= -->
+    <header
+      class="sticky top-0 z-40 bg-[#020617]/80 backdrop-blur border-b border-white/10 px-8 py-4 flex justify-end items-center">
+
+      <!-- LOGOUT -->
+      <button onclick="logout()" class="px-4 py-2 rounded-lg border border-white/20 hover:bg-white/10 transition">
+        Logout
+      </button>
+
+    </header>
+
+    <!-- ================= DASHBOARD (hidden until logged in) ================= -->
+    <section id="dashboard" class="px-10 py-8 hidden">
+
+      <div class="max-w-7xl mx-auto">
+
+        <!-- Welcome -->
+        <div class="mb-6">
+          <h1 class="text-4xl font-extrabold" id="welcomeHeading"></h1>
+          <p class="text-gray-400">Here's what's happening with your learning journey</p>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+
+          <div class="glass rounded-2xl p-6">
+            <p class="text-sm text-gray-400">Active Sessions</p>
+            <div class="text-2xl font-bold text-primary mt-3" id="activeSessionsCount">0</div>
+          </div>
+
+          <div class="glass rounded-2xl p-6">
+            <p class="text-sm text-gray-400">Sent Requests</p>
+            <div class="text-2xl font-bold text-green-500 mt-3" id="sentRequestsCount">0</div>
+          </div>
+
+          <div class="glass rounded-2xl p-6">
+            <p class="text-sm text-gray-400">Received Requests</p>
+            <div class="text-2xl font-bold text-purple-400 mt-3" id="receivedRequestsCount">0</div>
+          </div>
+
+          <div class="glass rounded-2xl p-6">
+            <p class="text-sm text-gray-400">Your Rating</p>
+            <div class="text-2xl font-bold text-yellow-500 mt-3" id="rating">N/A</div>
+          </div>
+
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="glass rounded-2xl p-6 mb-6">
+          <h3 class="font-semibold mb-4">Quick Actions</h3>
+          <div class="flex gap-4">
+            <a href="browse.html"><button class="px-6 py-3 rounded-lg bg-black/80 text-white">Browse Skills</button></a>
+            <!-- CHANGED: now points to view-requests.html -->
+            <a href="view-requests.html"><button class="px-6 py-3 rounded-lg border border-white/20">View
+                Requests</button></a>
+            <!-- Edit profile now goes to profile.html?edit=1 -->
+            <a href="profile.html?edit=1"><button class="px-6 py-3 rounded-lg border border-white/20">Edit
+                Profile</button></a>
+          </div>
+        </div>
+
+        <!-- Active Learning Sessions -->
+        <div class="glass rounded-2xl p-6">
+          <h3 class="font-semibold mb-4">Active Learning Sessions</h3>
+
+          <div id="activeSessionsContainer" class="space-y-4">
+            <!-- Session cards will be injected here by script.js -->
+            <p class="text-gray-400">No active sessions yet.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ================= HERO / PUBLIC CONTENT (kept for unauthenticated users) ================= -->
+    <section id="publicHero" class="px-10 py-28 text-center min-h-screen flex flex-col justify-center">
+
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-6">
+        Skill <span class="text-primary">Exchange</span> Hub
+      </h1>
+
+      <p class="text-gray-400 max-w-2xl mx-auto text-lg">
+        Discover talents, connect with mentors, and exchange skills globally.
+        Build meaningful learning connections without financial barriers.
+      </p>
+
+    </section>
+
+    <!-- ================= HOW IT WORKS ================= -->
+    <section class="px-10 pb-24">
+
+      <div class="text-center mb-16">
+
+        <h2 class="text-4xl font-bold mb-3">
+          How <span class="text-primary">SkillSwap</span> Works
+        </h2>
+
+        <p class="text-gray-400">
+          A simple three-step process to start exchanging skills
+        </p>
+
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+
+        <!-- EDIT PROFILE CARD (was Create Profile) -->
+        <div>
+          <a href="profile.html?edit=1" class="block">
+            <div class="glass rounded-2xl p-8 hover:scale-105 transition">
+              <div class="text-primary text-3xl mb-4">👤</div>
+              <h3 class="text-xl font-semibold mb-3">Edit Profile</h3>
+              <p class="text-gray-400 text-sm">
+                Update your skills and learning goals.
+              </p>
+            </div>
+          </a>
+        </div>
+
+        <div>
+          <a href="browse.html" class="block">
+            <div class="glass rounded-2xl p-8 hover:scale-105 transition">
+              <div class="text-accent text-3xl mb-4">🔍</div>
+              <h3 class="text-xl font-semibold mb-3">Find Matches</h3>
+              <p class="text-gray-400 text-sm">
+                Discover compatible learners.
+              </p>
+            </div>
+          </a>
+        </div>
+
+        <div class="glass rounded-2xl p-8 hover:scale-105 transition">
+          <div class="text-pink-400 text-3xl mb-4">🔄</div>
+          <h3 class="text-xl font-semibold mb-3">Exchange Skills</h3>
+          <p class="text-gray-400 text-sm">
+            Collaborate and grow together.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <footer class="border-t border-white/10 py-6 text-center text-gray-500 text-sm">
+      © 2026 SkillSwap Platform
+    </footer>
+
+  </div>
+
+  <!-- ✅ ONLY THIS SCRIPT -->
+  <script type="module" src="../backend/script.js"></script>
+
+</body>
+
+</html>

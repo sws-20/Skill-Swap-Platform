@@ -1,0 +1,232 @@
+/* -------------------- GLOBAL -------------------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+
+  /* BACKGROUND IMAGE */
+  background-image: url("bg2.png"); /* change name if needed */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  height: 100vh;
+}
+
+/* -------------------- MAIN LAYOUT -------------------- */
+.main-container {
+  display: flex;
+  height: 100vh;
+  backdrop-filter: blur(6px);
+}
+
+/* -------------------- GLASS ANIMATION -------------------- */
+@keyframes glassFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -------------------- LEFT : LOGIN -------------------- */
+.login-section {
+  width: 50%;
+  padding: 60px;
+
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+
+  animation: glassFadeIn 1s ease forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-section h1 {
+  font-size: 32px;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* INPUTS */
+.login-section input {
+  width: 100%;
+  padding: 12px;
+  margin: 12px 0;
+
+  border: none;
+  border-radius: 6px;
+
+  background: rgba(255, 255, 255, 0.85);
+  color: #000;
+
+  font-size: 14px;
+  outline: none;
+
+  pointer-events: auto;
+  position: relative;
+  z-index: 5;
+}
+
+/* BUTTON */
+.login-section button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+
+  background-color: #2ecc71;
+  color: white;
+
+  border: none;
+  border-radius: 6px;
+
+  font-size: 15px;
+  cursor: pointer;
+
+  position: relative;
+  z-index: 5;
+}
+
+/* MESSAGE */
+#message {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* LINK */
+.login-section a {
+  color: #006400;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* -------------------- RIGHT : INFO -------------------- */
+.info-section {
+  width: 50%;
+  padding: 60px;
+
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(14px);
+  color: white;
+
+  animation: glassFadeIn 1.2s ease forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-section h2 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.info-section p {
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+/* ABOUT BUTTON */
+.info-section button {
+  margin-top: 15px;
+  padding: 8px 16px;
+
+  background: #1abc9c;
+  color: white;
+
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* -------------------- HOVER EFFECT -------------------- */
+.login-section:hover,
+.info-section:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* -------------------- RESPONSIVE -------------------- */
+@media (max-width: 900px) {
+  .main-container {
+    flex-direction: column;
+  }
+
+  .login-section,
+  .info-section {
+    width: 100%;
+    height: auto;
+  }
+}
+/* ---------------- SIGNUP PAGE ---------------- */
+
+.signup-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-card {
+  width: 420px;
+  padding: 40px;
+
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(15px);
+
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+  animation: glassFadeIn 1s ease forwards;
+}
+
+/* Inputs */
+.signup-card input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+
+  border: none;
+  border-radius: 6px;
+
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+}
+
+/* Button */
+.signup-card button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+
+  background-color: #2ecc71;
+  color: white;
+
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* Text */
+.signup-card h1 {
+  margin-bottom: 5px;
+}
+
+.signup-card .subtitle {
+  margin-bottom: 25px;
+  color: #222;
+}
+
+.signup-card a {
+  color: #006400;
+  font-weight: bold;
+  text-decoration: none;
+}

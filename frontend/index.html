@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SkillSwap — Learn. Teach. Grow.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#006064',
+            accent: '#FF7F50'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .glow-btn {
+      box-shadow: 0 0 30px rgba(0, 96, 100, 0.5);
+    }
+
+    .glow-circle {
+      filter: blur(70px);
+      opacity: 0.5;
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-br from-[#0F172A] via-[#020617] to-[#020617] text-gray-200 min-h-screen overflow-x-hidden">
+
+<!-- NAVBAR -->
+<nav class="sticky top-0 z-50 backdrop-blur-lg bg-[#020617]/80 border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+    <!-- Logo -->
+    <div class="flex items-center space-x-3">
+      <div class="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center font-bold text-white text-lg">
+        S
+      </div>
+      <span class="text-xl font-semibold">SkillSwap</span>
+    </div>
+
+    <!-- Buttons -->
+    <div class="flex items-center space-x-4">
+      <a href="./signup.html">
+        <button class="px-5 py-2 rounded-lg bg-gradient-to-r from-primary to-accent glow-btn hover:scale-105 transition transform">
+          Sign Up
+        </button>
+      </a>
+    </div>
+
+  </div>
+</nav>
+
+
+<!-- HERO SECTION -->
+<section class="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-12 items-center">
+
+  <!-- LEFT CONTENT -->
+  <div class="space-y-7">
+
+    <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
+      Learn.
+      <span class="text-primary">Teach.</span>
+      Grow.
+    </h1>
+
+    <p class="text-gray-400 max-w-lg text-lg">
+      SkillSwap connects learners and experts worldwide to exchange knowledge without monetary barriers.
+    </p>
+
+    <!-- CTA BUTTONS -->
+    <div class="flex flex-wrap gap-4 pt-4">
+
+      <a href="./signup.html">
+        <button class="px-7 py-3 rounded-xl bg-gradient-to-r from-primary to-accent glow-btn hover:scale-105 transition transform font-semibold">
+          Get Started →
+        </button>
+      </a>
+
+      <a href="./signin.html">
+        <button class="px-7 py-3 rounded-xl border border-white/20 hover:bg-white/10 transition">
+          Sign In
+        </button>
+      </a>
+
+    </div>
+  </div>
+
+
+  <!-- RIGHT CIRCLE -->
+  <div class="relative flex justify-center items-center">
+
+    <div class="absolute w-[320px] h-[320px] bg-gradient-to-r from-primary to-accent rounded-full glow-circle"></div>
+
+    <div class="relative w-[300px] h-[300px] rounded-full bg-gradient-to-br from-[#020617] to-[#0F172A] border border-white/10 shadow-2xl flex flex-col justify-center items-center text-center p-8">
+
+      <h3 class="text-2xl font-bold mb-3">Skill Exchange Hub</h3>
+
+      <p class="text-gray-400 text-sm">
+        Discover talents, connect with mentors, and exchange skills globally.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<footer class="border-t border-white/10 py-6 text-center text-gray-500 text-sm">
+  © 2026 SkillSwap
+</footer>
+
+</body>
+</html>

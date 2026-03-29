@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>SkillSwap | Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#006064',
+            accent: '#FF7F50'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .glow-btn {
+      box-shadow: 0 0 25px rgba(0, 96, 100, 0.5);
+    }
+  </style>
+</head>
+
+<body
+  class="bg-gradient-to-br from-[#0F172A] via-[#020617] to-[#020617] min-h-screen flex items-center justify-center text-gray-200">
+
+  <!-- MAIN CONTAINER -->
+  <div
+    class="max-w-5xl w-full mx-6 grid md:grid-cols-2 gap-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden">
+
+    <!-- LOGIN SECTION -->
+    <div class="p-10 flex flex-col justify-center">
+
+      <h1 class="text-3xl font-bold mb-2">SkillSwap</h1>
+      <p class="text-gray-400 mb-6">Login to continue</p>
+
+      <form onsubmit="loginUser(event)" class="space-y-4">
+
+        <input type="email" id="loginEmail" placeholder="Email" required
+          class="w-full px-4 py-3 rounded-lg bg-[#020617] border border-white/10 focus:outline-none focus:border-primary">
+
+        <input type="password" id="loginPassword" placeholder="Password" required
+          class="w-full px-4 py-3 rounded-lg bg-[#020617] border border-white/10 focus:outline-none focus:border-primary">
+
+        <button type="submit"
+          class="w-full py-3 rounded-lg bg-gradient-to-r from-primary to-accent glow-btn hover:scale-105 transition font-semibold">
+          Login
+        </button>
+
+      </form>
+
+      <p id="loginMessage" class="mt-4 text-sm text-center"></p>
+
+      <p class="mt-6 text-sm text-gray-400 text-center">
+        Don’t have an account?
+        <a href="signup.html" class="text-primary hover:underline">
+          Sign up
+        </a>
+      </p>
+
+    </div>
+
+
+    <!-- INFO SECTION -->
+    <div class="p-10 bg-gradient-to-br from-[#020617] to-[#0F172A] flex flex-col justify-center">
+
+      <h2 class="text-2xl font-bold mb-3">What is Skill Exchange?</h2>
+
+      <p class="text-gray-400 mb-4">
+        Skill Exchange is a platform where users can share their skills
+        and learn new skills from others through mutual exchange.
+      </p>
+
+      <button onclick="toggleAbout()"
+        class="self-start px-5 py-2 rounded-lg border border-white/20 hover:bg-white/10 transition mb-4">
+        How it works
+      </button>
+
+      <div id="about" class="hidden text-gray-400 mb-4">
+            <p>
+          🔍 <strong class="text-gray-200">Browse</strong> mentors ranked by our ML-powered rating system.<br><br>
+          📩 <strong class="text-gray-200">Request</strong> a session with someone who teaches what you want to learn.<br><br>
+          💬 <strong class="text-gray-200">Chat</strong> directly, schedule a session, and start learning.<br><br>
+          ⭐ <strong class="text-gray-200">Rate</strong> your partner after each session to help others find the best mentors.
+        </p>
+      </div>
+
+      <hr class="border-white/10 my-4">
+
+      <h3 class="font-semibold mb-2">Contact Admin</h3>
+      <p class="text-gray-400 text-sm">Email: miniproject270@gmail.com</p>
+      <p class="text-gray-400 text-sm">Phone: +91 80754347110</p>
+
+    </div>
+
+  </div>
+
+  <!-- SCRIPT -->
+  <script type="module" src="../backend/script.js"></script>
+
+  <script>
+    function toggleAbout() {
+      const about = document.getElementById("about");
+      about.classList.toggle("hidden");
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>SkillSwap — Requests</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#006064',
+            accent: '#FF7F50'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-gradient-to-br from-[#0F172A] via-[#020617] to-[#020617] text-gray-200 min-h-screen overflow-x-hidden">
+
+  <nav class="sticky top-0 z-50 backdrop-blur-lg bg-[#020617]/80 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <div id="sidebarAvatarSmall"
+          class="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center font-bold text-white text-lg">
+          S
+        </div>
+        <span class="text-xl font-semibold">SkillSwap</span>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <a href="home.html" class="text-sm">Dashboard</a>
+        <a href="browse.html" class="text-sm">Browse</a>
+        <a href="profile.html" class="text-sm">Profile</a>
+        <a href="view-requests.html" class="text-sm font-semibold">Requests</a>
+        <button onclick="logout()"
+          class="px-4 py-2 rounded-lg border border-white/20 hover:bg-white/10 transition">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-6xl mx-auto px-6 py-10">
+    <div class="mb-8 items-center justify-between flex flex-col md:flex-row gap-4">
+      <div>
+        <h1 class="text-4xl font-bold text-white tracking-tight">Requests</h1>
+        <p class="text-gray-400 mt-1">Manage your skill exchange connections</p>
+      </div>
+      
+      <!-- TABS -->
+      <div class="flex p-1 bg-white/5 border border-white/10 rounded-xl">
+        <button id="tabReceived" class="px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 bg-primary text-white shadow-lg shadow-primary/20">
+          Received <span id="receivedCountBadge" class="ml-2 px-2 py-0.5 text-xs bg-white/20 rounded-full">0</span>
+        </button>
+        <button id="tabSent" class="px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 text-gray-400 hover:text-white">
+          Sent <span id="sentCountBadge" class="ml-2 px-2 py-0.5 text-xs bg-white/10 rounded-full">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- REQUESTS LIST -->
+    <div id="requestsListContainer" class="min-h-[400px]">
+      <div id="receivedRequests" class="grid grid-cols-1 lg:grid-cols-2 gap-6 opacity-100 transition-opacity duration-300">
+        <p class="text-gray-400 col-span-full">Loading requests…</p>
+      </div>
+      <div id="sentRequests" class="grid grid-cols-1 lg:grid-cols-2 gap-6 hidden opacity-0 transition-opacity duration-300">
+        <p class="text-gray-400 col-span-full">Loading requests…</p>
+      </div>
+    </div>
+
+    <!-- EMPTY STATE TEMPLATE (to be cloned by JS) -->
+    <div id="emptyStateTemplate" class="hidden">
+      <div class="flex flex-col items-center justify-center py-20 text-center animate-fade-in">
+        <div class="w-24 h-24 bg-white/5 rounded-full flex items-center justify-center mb-6 border border-white/10">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-gray-600">
+            <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
+            <path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2" id="emptyTitle">No Requests Yet</h3>
+        <p class="text-gray-400 max-w-xs mb-8" id="emptyDesc">When someone connects with you for a skill swap, it will appear here.</p>
+        <a href="browse.html" class="px-6 py-3 bg-primary/20 text-primary border border-primary/30 rounded-xl font-semibold hover:bg-primary/30 transition-all">Browse Skills</a>
+      </div>
+    </div>
+  </main>
+
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fadeIn 0.4s ease-out forwards;
+    }
+    .request-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .request-card:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+
+  <script type="module" src="../backend/script.js"></script>
+  <script>
+    // Tab switching logic
+    document.getElementById('tabReceived').addEventListener('click', () => {
+      switchTab('received');
+    });
+    document.getElementById('tabSent').addEventListener('click', () => {
+      switchTab('sent');
+    });
+
+    function switchTab(tab) {
+      const isReceived = tab === 'received';
+      const activeBtn = document.getElementById(isReceived ? 'tabReceived' : 'tabSent');
+      const inactiveBtn = document.getElementById(isReceived ? 'tabSent' : 'tabReceived');
+      const activeContent = document.getElementById(isReceived ? 'receivedRequests' : 'sentRequests');
+      const inactiveContent = document.getElementById(isReceived ? 'sentRequests' : 'receivedRequests');
+
+      // Update button styles
+      activeBtn.classList.add('bg-primary', 'text-white', 'shadow-lg', 'shadow-primary/20');
+      activeBtn.classList.remove('text-gray-400');
+      inactiveBtn.classList.remove('bg-primary', 'text-white', 'shadow-lg', 'shadow-primary/20');
+      inactiveBtn.classList.add('text-gray-400');
+
+      // Toggle visibility with animation
+      inactiveContent.classList.replace('opacity-100', 'opacity-0');
+      setTimeout(() => {
+        inactiveContent.classList.add('hidden');
+        activeContent.classList.remove('hidden');
+        setTimeout(() => {
+          activeContent.classList.replace('opacity-0', 'opacity-100');
+        }, 10);
+      }, 300);
+    }
+  </script>
+</body>
+
+</html>

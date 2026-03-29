@@ -1,0 +1,53 @@
+// ===============================================
+// FIREBASE STORAGE RULES FOR PROFILE PICTURES
+// ===============================================
+// 
+// Go to: Firebase Console → Storage → Rules
+// Replace existing rules with this:
+
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // Profile pictures - each user can only write to their own folder
+    match /profile_pics/{userId} {
+      allow read: if true;  // Anyone can view profile pictures
+      allow write: if request.auth != null 
+                   && request.auth.uid == userId
+                   && request.resource.size < 2 * 1024 * 1024  // Max 2MB
+                   && request.resource.contentType.matches('image/.*');  // Only images
+    }
+    
+    // Alternative path structure (if using subfolders)
+    match /profile_pics/{userId}/{allPaths=**} {
+      allow read: if true;
+      allow write: if request.auth != null 
+                   && request.auth.uid == userId
+                   && request.resource.size < 2 * 1024 * 1024
+                   && request.resource.contentType.matches('image/.*');
+    }
+    
+    // Default: deny all other access
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
+
+// ===============================================
+// WHAT THIS DOES:
+// ===============================================
+// ✅ Only logged-in users can upload
+// ✅ Users can only upload to their own folder (profile_pics/{their_uid})
+// ✅ Anyone can view profile pictures (public read)
+// ✅ Max file size: 2MB
+// ✅ Only image files allowed
+// ✅ Prevents unauthorized access
+
+// ===============================================
+// AFTER UPDATING RULES:
+// ===============================================
+// 1. Click "Publish" in Firebase Console
+// 2. Wait 30 seconds for rules to propagate
+// 3. Test upload again
